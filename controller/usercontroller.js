@@ -29,7 +29,7 @@ export const register = async(req, res)=>{
         } }
     
    } catch (error) {
-    res.status(401).json({message : error})
+    res.status(401).json({message : error.message})
     
     
    }
