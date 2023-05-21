@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
+
 
 const UserSchema = mongoose.Schema({
     name : {
@@ -28,10 +30,13 @@ const UserSchema = mongoose.Schema({
         default: false
 
     },
-    isDoctor : {
-        type : Boolean,
+    userType : {
+        type : String,
+        enum : ['user', 'doctor'],
+
         required : true,
-        default: false
+        default : 'user',
+       
 
     },
     
