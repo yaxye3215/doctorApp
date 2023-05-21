@@ -13,7 +13,7 @@ export const register = async(req, res)=>{
         const user= await Users.create({
             name, email, password, address, phone,
         })
-       console.log(user.status);
+       
 
         if (user) {
             res.status(201).json({
