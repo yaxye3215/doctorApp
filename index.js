@@ -1,6 +1,7 @@
 import express from "express";
 import contectdb from "./datebase/db.js";
 import userrouter from "./router/userRouter.js";
+import productrouter from "./router/messageRouter.js";
 import dotenv from "dotenv";
 
 dotenv.config()
@@ -8,6 +9,7 @@ contectdb()
 const app = express()
 app.use(express.json())
 app.use('/api/user',userrouter)
+app.use('/api/message',productrouter)
 
 
 
