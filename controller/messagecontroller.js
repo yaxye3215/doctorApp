@@ -3,16 +3,24 @@ import Message from "../models/message.js";
 
 export const sendMessage = async(req, res)=>{
  try {
-    const {senderId, recipientId, content} = req.body;
+    const {sender, recipient, content} = req.body;
 
-    const message = Message({
-        sender: senderId,
-        recipient: recipientId,
-        content: content,
-    });
+    const message = await Message.create({
+        sender, recipient, content
+         
 
-    await message.save()
-    res.status(200).json({message: 'message send successfully.'})
+    })
+    if (message) {
+        res.status(200).json({
+            sender: message.sender,
+            recipient: message.recipient,
+            content:message.content,
+        });
+
+        
+    }
+
+    
     
  } catch (error) {
     console.log(error);
