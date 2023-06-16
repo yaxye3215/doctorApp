@@ -24,15 +24,9 @@ const UserSchema = mongoose.Schema({
         required : true
 
     },
-    isAdmin : {
-        type : Boolean,
-        required : true,
-        default: false
-
-    },
     userType : {
         type : String,
-        enum : ['user', 'doctor'],
+        enum : ['user', 'doctor', 'isAdmin'],
 
         required : true,
         default : 'user',
