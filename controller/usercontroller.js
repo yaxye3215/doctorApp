@@ -83,8 +83,7 @@ export const getUserProfile = async (req, res) =>{
             password: user.password,
             address: user.address,
             phone: user.phone,
-            isAdmin: user.isAdmin,
-            isDoctor: user.isDoctor,
+            userType: user.userType,
             token
 
         })
