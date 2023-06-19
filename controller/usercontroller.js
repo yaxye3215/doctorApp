@@ -97,3 +97,30 @@ export const getUserProfile = async (req, res) =>{
     
   }
 }
+
+export const getAllUsers = async(req,res)=>{
+ try {
+  const user = await User.find()
+  
+  if (user) {
+    res.status(200).json({
+      _id:user._id,
+      name: user.name,
+      email: user.email,
+      password: user.password,
+      address: user.address,
+      phone: user.phone,
+      userType: user.userType,
+      token
+  
+  })
+    
+   } else {
+    res.status(404).json({message : "user not found"})
+    
+  }
+ } catch (error) {
+  res.status(401).json({message : error})
+  
+ }
+}
