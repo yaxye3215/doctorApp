@@ -3,9 +3,8 @@ import { getAllUsers, getUserProfile, login, register } from "../controller/user
 
 const router =express.Router()
 
-router.route('/').post(register)
+router.route('/').post(register).get(getAllUsers)
 router.route('/login').post(login)
 router.route('/profile').post(getUserProfile)
-router.route('/users').get(getAllUsers)
 
 export default router
