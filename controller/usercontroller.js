@@ -22,7 +22,6 @@ export const register = async(req, res)=>{
                 password: user.password,
                 address: user.address,
                 phone: user.phone,
-                
                 token:generaltoen(user._id)
             })
 
@@ -109,3 +108,34 @@ export const getAllUsers = async(req,res)=>{
   
  }
 }
+
+export const update = async(req, res)=>{
+try {
+  const {name,email,password,address,phone,userType} = req.body;
+  const user = await Users.findById(req.params.id)
+ if (user) {
+  user.name = name,
+  user.email = email,
+  user.password = password,
+  user.address = address,
+  user.phone = phone,
+  user.userType = userType
+
+  
+  const updateduser= await user.save()
+  if (updateduser) {
+   res.status(201).json(updateduser)
+   
+  }
+  
+ } else {
+  res.status(404).json({Message: "user not found"})
+  
+ }
+} catch (error) {
+  res.status(500).json({error: error.message})
+}
+
+  
+}
+
