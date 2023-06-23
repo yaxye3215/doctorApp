@@ -21,3 +21,15 @@ export const Create = async (req, res)=>{
     
   }
 }
+
+export const getdoctors = async (req, res)=>{
+  try {
+      const doctors = await Doctors.find()
+  res.json(doctors)
+      
+  } catch (error) {
+      res.status(500).json({error: error.Message})
+
+      
+  }
+}
