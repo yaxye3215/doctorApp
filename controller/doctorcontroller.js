@@ -2,13 +2,13 @@ import Doctors from "../models/doctor.js";
 
 export const Create = async (req, res)=>{
   try {
-    const {type,name,experience,specialist,image} = req.body;
+    const {user,name,experience,specialist,image} = req.body;
     const doctor = await Doctors.create({
-        name,experience,specialist,image
+        user,name,experience,specialist,image
     });
     if (doctor) {
         res.status(201).json({
-            type: doctor.type,
+            user: doctor.user,
             name:doctor.name,
             experience:doctor.experience,
             specialist:doctor.specialist,
